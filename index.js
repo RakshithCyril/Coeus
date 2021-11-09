@@ -1,4 +1,6 @@
 const express = require('express');
+const dot = require('dotenv')
+dot.config()
 const app = express();
 const mongoose = require('mongoose');
 const path = require('path');
@@ -153,6 +155,7 @@ app.post('/deletec',requireLogin,async(req,res)=>{
 app.get('/proceed',requireLogin,(req,res)=>{
     res.render('proceed')
 })
-app.listen('8080',()=>{
-    console.log('listening......');
+const port = process.env.PORT || 3000
+app.listen(port,()=>{
+    console.log(`listening......${port}`);
 })
